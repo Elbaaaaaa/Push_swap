@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:23:40 by ebella            #+#    #+#             */
-/*   Updated: 2024/12/04 18:57:40 by ebella           ###   ########.fr       */
+/*   Updated: 2025/01/30 12:49:01 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int nb, int fd);
+long				ft_atol(const char *str);
 
 // Bonus Functons
 t_list				*ft_lstnew(void *content);

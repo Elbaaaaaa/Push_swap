@@ -7,7 +7,11 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = push_swap
 
-SRCS = src/main.c \
+SRCS =	src/main.c \
+		src/parse_args.c \
+		src/utils.c \
+		src/operations.c \
+		src/radix.c \
 
 OBJS = $(SRCS:.c=.o)
 
