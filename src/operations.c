@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:22:41 by ebella            #+#    #+#             */
-/*   Updated: 2025/01/31 17:02:43 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/17 12:28:41 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	sa(t_stack **list)
 {
 	t_stack	*temp;
-	
+
 	if (!*list || !(*list)->next)
 		return ;
 	temp = *list;
@@ -40,10 +40,10 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 	ft_putstr_fd("pa\n", 1);
 }
 
-//Top number in A is moved to the top of B
+// Top number in A is moved to the top of B
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!*stack_a)
 		return ;
@@ -53,11 +53,12 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = temp;
 	ft_putstr_fd("pb\n", 1);
 }
+
 // Top number in A goes to the bottom of A
 void	ra(t_stack **stack)
 {
 	t_stack	*temp;
-	
+
 	if (!*stack || !(*stack)->next)
 		return ;
 	temp = *stack;
@@ -65,12 +66,13 @@ void	ra(t_stack **stack)
 	ft_lstadd_back_stack(stack, temp);
 	ft_putstr_fd("ra\n", 1);
 }
+
 // Bottom number in A goes to top of A
 void	rra(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*temp_last;
-	
+
 	if (!*stack || !(*stack)->next)
 		return ;
 	temp = (*stack);

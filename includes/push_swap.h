@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:19:15 by ebella            #+#    #+#             */
-/*   Updated: 2025/02/04 17:17:20 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/18 12:01:40 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void				sort_5_stack(t_stack **stack);
 void				radix_sort(t_stack **stack_a);
 int					find_max(t_stack *stack);
 int					find_min(t_stack *stack);
+void				normalize_values(t_stack **stack_a);
 
 /*							OPERATIONS								*/
 void				sa(t_stack **list);

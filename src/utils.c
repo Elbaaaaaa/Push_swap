@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:44:28 by ebella            #+#    #+#             */
-/*   Updated: 2025/01/31 16:11:37 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/17 12:28:54 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_lstadd_back_stack(t_stack **stack, t_stack *new)
 {
-    t_stack	*current;
+	t_stack	*current;
 
-    if (!*stack)
-    {
-        *stack = new;
-        new->next = NULL;
-        return ;
-    }
-    current = *stack;
-    while (current->next)
-        current = current->next;
-    current->next = new;
-    new->next = NULL;
+	if (!*stack)
+	{
+		*stack = new;
+		new->next = NULL;
+		return ;
+	}
+	current = *stack;
+	while (current->next)
+		current = current->next;
+	current->next = new;
+	new->next = NULL;
 }
 
 t_stack	*ft_lstlast_stack(t_stack *lst)
@@ -37,7 +37,7 @@ t_stack	*ft_lstlast_stack(t_stack *lst)
 		return (0);
 	temp = lst;
 	while (temp->next)
-		temp = temp->next;		
+		temp = temp->next;
 	return (temp);
 }
 
@@ -74,14 +74,15 @@ long	ft_atol_stack(const char *str)
 		result = (result * 10) + (str[i++] - '0');
 	return (result * sign);
 }
+
 void	free_stack(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	while (*stack)
 	{
 		temp = (*stack)->next;
 		free(*stack);
-		*stack = temp;		
+		*stack = temp;
 	}
 }

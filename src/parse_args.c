@@ -6,57 +6,11 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:19:06 by ebella            #+#    #+#             */
-/*   Updated: 2025/02/04 17:17:02 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:57:38 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-char	*init_str(char **input)
-{
-	char	*str;
-	char	*temp;
-	int		i;
-	size_t	len;
-
-	str = ft_strdup("");
-	i = 1;
-	while (input[i])
-	{
-		len = ft_strlen(str) + ft_strlen(input[i]) + 2;
-		temp = (char *)malloc(len * sizeof(char));
-		if (!temp)
-			return (free(temp), NULL);
-		ft_strlcpy(temp, str, len);
-		ft_strlcat(temp, input[i], len);
-		free(str);
-		str = temp;
-		if (input[i + 1])
-			ft_strlcat(temp, " ", len);
-		i++;
-	}
-	return (str);
-}
-
-int	init_list(t_stack **list, char *str)
-{
-	char	*token;
-	long	nbr;
-
-	token = ft_strtok(str, ' ');
-	while (token)
-	{
-		nbr = ft_atol_stack(token);
-		if (already_appeared(*list, nbr))
-			return (free_stack(list), free(str), ft_putstr_fd("Error\n", 2), 0);
-		if (nbr > 2147483647 || nbr < -2147483648)
-			return (free_stack(list), free(str), ft_putstr_fd("Error\n", 2), 0);
-		ft_lstadd_back_stack(list, ft_lstnew_stack(nbr));
-		token = ft_strtok(NULL, ' ');
-	}
-	free(str);
-	return (1);
-}
 
 int	input_is_valid(char **input)
 {
@@ -65,11 +19,13 @@ int	input_is_valid(char **input)
 
 	temp = init_str(input);
 	i = 0;
+	if (temp[i] == '-')
+		i++;
 	while (temp[i])
 	{
 		if (!ft_isdigit(temp[i]) && temp[i] != ' ' && (temp[i] != '-'
 				|| (!ft_isdigit(temp[i + 1]) || ft_isdigit(temp[i - 1]))))
-			return (0);
+			return (free(temp), 0);
 		i++;
 	}
 	free(temp);
@@ -100,7 +56,7 @@ char	*ft_strtok(char *str, char delim)
 	last = last + i + 1;
 	return (token);
 }
-// checks if the stack of numbers is already sorted.
+
 int	stack_a_sorted(t_stack *stack)
 {
 	t_stack	*current;
@@ -114,6 +70,7 @@ int	stack_a_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
 int	already_appeared(t_stack *stack, long n)
 {
 	t_stack	*current;
@@ -130,16 +87,15 @@ int	already_appeared(t_stack *stack, long n)
 
 int	parse_input(int argc, char **argv)
 {
-    if (argc < 2)
-    {
-        ft_putstr_fd("Error, too few args\n", 2);
-        return (0);
-    }
-    if (!input_is_valid(argv))
-    {
-        ft_putstr_fd("Error, invalid input\n", 2);
-        return (0);
-    }
-
-    return (1);
+	if (argc < 2)
+	{
+		ft_putstr_fd("Error, too few args\n", 2);
+		return (0);
+	}
+	if (!input_is_valid(argv))
+	{
+		ft_putstr_fd("Error, invalid input\n", 2);
+		return (0);
+	}
+	return (1);
 }

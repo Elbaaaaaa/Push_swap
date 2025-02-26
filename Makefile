@@ -12,6 +12,7 @@ SRCS =	src/main.c \
 		src/utils.c \
 		src/operations.c \
 		src/radix.c \
+		src/init_str.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:55:55 by ebella            #+#    #+#             */
-/*   Updated: 2025/02/04 17:28:34 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/18 13:58:21 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,49 @@ int	find_min(t_stack *stack)
 	return (min);
 }
 
+void	normalize_values(t_stack **stack_a)
+{
+	t_stack		*current;
+	t_stack		*temp;
+	int			j;
+
+	current = *stack_a;
+	while (current)
+	{
+		temp = *stack_a;
+		j = 0;
+		while (temp)
+		{
+			if (current->n > temp->n)
+				j++;
+			temp = temp->next;
+		}
+		current->n = j;
+		current = current->next;
+	}
+}
+
 void	radix_sort(t_stack **stack_a)
 {
+	t_stack	*stack_b;
+	int		i;
+	int		size;
 
+	normalize_values(stack_a);
+	stack_b = NULL;
+	i = 0;
+	while (stack_a_sorted(*stack_a) == 0)
+	{
+		size = nb_nodes(stack_a);
+		while (size--)
+		{
+			if (((*stack_a)->n >> i & 1) == 0)
+				pb(stack_a, &stack_b);
+			else
+				ra(stack_a);
+		}
+		while (stack_b)
+			pa(stack_a, &stack_b);
+		i++;
+	}
 }
