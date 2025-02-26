@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:55:55 by ebella            #+#    #+#             */
-/*   Updated: 2025/02/18 13:58:21 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:27:06 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	normalize_values(t_stack **stack_a)
 				j++;
 			temp = temp->next;
 		}
-		current->n = j;
+		current->normalized = j;
 		current = current->next;
 	}
 }
@@ -80,7 +80,7 @@ void	radix_sort(t_stack **stack_a)
 		size = nb_nodes(stack_a);
 		while (size--)
 		{
-			if (((*stack_a)->n >> i & 1) == 0)
+			if (((*stack_a)->normalized >> i & 1) == 0)
 				pb(stack_a, &stack_b);
 			else
 				ra(stack_a);

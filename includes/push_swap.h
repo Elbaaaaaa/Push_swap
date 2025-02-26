@@ -6,7 +6,7 @@
 /*   By: ebella <ebella@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:19:15 by ebella            #+#    #+#             */
-/*   Updated: 2025/02/18 12:01:40 by ebella           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:26:52 by ebella           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_stack
 {
 	int				n;
+	int				normalized;
 	struct s_stack	*next;
 }					t_stack;
 
